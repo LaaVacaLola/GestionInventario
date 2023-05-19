@@ -89,6 +89,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
     </Compile>
+    <Compile Include="GestionInventarioDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>GestionInventarioDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\Category.cs" />
     <Compile Include="Modelo\Item.cs" />
     <Compile Include="Modelo\Product.cs" />
@@ -169,6 +174,17 @@
     </None>
     <None Include="DataClasses.dbml.layout">
       <DependentUpon>DataClasses.dbml</DependentUpon>
+    </None>
+    <None Include="GestionInventarioDataSet.xsc">
+      <DependentUpon>GestionInventarioDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="GestionInventarioDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>GestionInventarioDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="GestionInventarioDataSet.xss">
+      <DependentUpon>GestionInventarioDataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

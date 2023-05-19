@@ -16,6 +16,7 @@ namespace GestionInventario.Vista
     {
         private readonly LoginController _controlador;
         private User loggedUser;
+
         public User GetUser
         {
             get
@@ -39,6 +40,7 @@ namespace GestionInventario.Vista
         {
             get { return txtContraseña.Text.Trim(); }
         }
+
 
         public void MostrarMensaje(string mensaje)
         {
@@ -71,6 +73,11 @@ namespace GestionInventario.Vista
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             if(loggedUser == null) Application.Exit();
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+           txtContraseña.UseSystemPasswordChar = !txtContraseña.UseSystemPasswordChar;
         }
     }
 
