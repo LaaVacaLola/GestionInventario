@@ -1,0 +1,21 @@
+﻿@model GestionInventarioWeb.Data.User;
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Dashboard";
+}
+
+<div class="container-fluid">
+    <h2>Ventas</h2>
+    @if(Model == null)
+    {
+        <div class="alert alert-warning">Error al obtener datos!</div>
+    }
+    else
+    {
+        <p>Hola @Model.Name</p>
+        <p>Tu rut es @Model.Rut</p>
+        <p>@Context.Session.GetString("Role")</p>
+    }
+</div>
+
+<p>Hola que haces @Model.Name</p>

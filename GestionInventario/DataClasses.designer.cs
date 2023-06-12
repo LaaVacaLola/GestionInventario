@@ -60,7 +60,7 @@ namespace GestionInventario
     #endregion
 		
 		public DataClassesDataContext() : 
-				base(global::GestionInventario.Properties.Settings.Default.GestionInventarioEstaSiQueSi, mappingSource)
+				base(global::GestionInventario.Properties.Settings.Default.GestionInventarioConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

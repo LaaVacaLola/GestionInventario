@@ -1,0 +1,203 @@
+* {
+    font-family: sans-serif !important;
+}
+
+html,
+body,
+p{
+    font-size: .95em;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    background-color: rgb(210, 210, 210);
+    color: #1d1d1d;
+    padding: 0;
+    margin: 0;
+}
+
+div {
+    padding: 0;
+}
+
+input.form-control,
+input.btn,
+select,
+button {
+    padding: .6em !important;
+    border: none !important;
+    border-radius: 0px !important;
+    width: 100%;
+}
+
+.form-check label {
+    float: left;
+}
+
+input[type='button'],
+button {
+    background-color: rgb(41, 144, 212);
+    color: white;
+    padding: .6em 1.4em
+}
+
+.btn {
+    padding: .375rem .75rem !important;
+}
+.btn-oscuro {
+    background-color: #191B27;
+    border-color: #191B27;
+}
+
+form > * {
+    margin-bottom: 1em !important;
+}
+
+.alert,
+.btn,
+.form-control {
+    border-radius: 0;
+}
+
+.login {
+    background-color: rgb(210, 210, 210);
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: 36em auto;
+    grid-template-areas: "form white";
+}
+
+.login > * {
+    padding: 2em;
+}
+
+#loginForm {
+    grid-area: form;
+    background-color: #191B27;
+    color: white;
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: max-content;
+    align-items: start;
+    justify-items: stretch;
+    align-content: stretch;
+    text-align: center;
+}
+
+#loginMessages {
+    background: url("../img/fondo-login.jpg");
+    background-position: right;
+    background-repeat: no-repeat;
+    background-size: cover;
+    grid-area: white;
+    grid-auto-rows: auto;
+}
+
+.main {
+    background-color: rgb(210, 210, 210);
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 20em auto;
+    grid-template-areas: "nav content";
+}
+
+.nav {
+    grid-area: nav;
+    background-color: #191B27;
+    color: white;
+    display: grid;
+    grid-template-columns: auto;
+    grid-auto-rows: max-content;
+    align-items: start;
+    justify-items: stretch;
+    align-content: space-between;
+    text-align: center;
+    padding: 0;
+}
+
+.nav > * {
+    padding: 0;
+}
+
+.nav .user-area {
+    padding: 1em;
+}
+
+.nav .usr-img {
+    border-radius: 50%;
+    margin: auto;
+    padding: 1em;
+}
+
+.nav .usr-name {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.nav .usr-name > *:first-child{
+    margin-bottom: 0px;
+}
+
+.nav .usr-name > * {
+    padding: inherit;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.nav-links, .nav-bottom {
+    list-style: none;
+    text-align: left;
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.nav-links a,
+.nav-bottom a,
+.nav-links i,
+.nav-bottom i {
+    padding: 1em;
+}
+
+.nav-bottom {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.nav-links li, .nav-bottom li {
+    padding: 0;
+}
+
+.nav-links li a, .nav-bottom li a {
+    text-decoration: none;
+    color: white;
+    display: block;
+}
+
+.nav-links li a:hover, .nav-bottom li a:hover {
+    background-color: rgb(210, 210, 210);
+    color: black;
+    transition: background-color 200ms, color 200ms;
+}
+
+.content {
+    background-color: rgb(210, 210, 210);
+    padding: 1em;
+}
+
+.content > * {
+    padding: 1em;
+    background-color: white;
+}

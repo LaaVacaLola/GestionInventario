@@ -1,4 +1,6 @@
 ﻿using GestionInventario.Controlador;
+using GestionInventario.Controlador.Products.Categories;
+using GestionInventario.Modelo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,17 +18,32 @@ namespace GestionInventario.Vista
         private FindCategoryController categoryFinder;
         private CreateCategoryController categoryCreator;
         private DeleteCategoryController categoryDeletor;
+        private ListProductController productFinder;
+        private CreateProductController productCreator;
+        private DeleteProductController productDeletor;
+
+        private List<ProductListViewItem> productList;
+
+        private Product selectedProduct;
+        private EditProductForm editProductForm;
+        private ModifyCategoryForm modifyCategoryForm;
+        private String categorySelected;
+
         public ProductsForm()
         {
             InitializeComponent();
             categoryFinder = new FindCategoryController();
             categoryCreator = new CreateCategoryController();
             categoryDeletor = new DeleteCategoryController();
+            productFinder = new ListProductController();
+            productCreator = new CreateProductController();
+            productDeletor = new DeleteProductController();
         }
 
         private void ProductsForm_Load(object sender, EventArgs e)
         {
             refreshCategoryList();
+            refreshProductList();
         }
 
         private void refreshCategoryList()
@@ -61,12 +78,11 @@ namespace GestionInventario.Vista
 
         private void btnDeleteCategory_Click(object sender, EventArgs e)
         {
-            string text = categoryList.SelectedItem.ToString().Trim();
-            if (!string.IsNullOrEmpty(text))
+            if (!string.IsNullOrEmpty(categorySelected))
             {
                 try
                 {
-                    categoryDeletor.execute(text);
+                    categoryDeletor.execute(categorySelected);
                 }catch(Exception ex)
                 {
                     showMessage(ex.Message);
@@ -74,6 +90,112 @@ namespace GestionInventario.Vista
                 txtNewCategory.Text = "";
                 categoryList.SelectedIndex = -1;
                 refreshCategoryList();
+            }
+        }
+
+        protected void refreshProductList()
+        {
+            productList = new List<ProductListViewItem>();
+            foreach(Product p in productFinder.execute())
+            {
+                productList.Add(new ProductListViewItem(p));
+            }
+            listProductsView.Items.Clear();
+            listProductsView.Items.AddRange(productList.ToArray());
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            refreshProductList();
+            refreshCategoryList();
+        }
+
+        private void btnAddProduct_Click(object sender, EventArgs e)
+        {
+            editProductForm = new EditProductForm();
+            if(editProductForm.ShowCreationDialog(this) == DialogResult.OK)
+            {
+                refreshProductList();
+            }
+        }
+
+        private void listProductsView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listProductsView.SelectedItems.Count > 0)
+            {
+                selectedProduct = (listProductsView.SelectedItems[0] as ProductListViewItem).product;
+            }
+            
+        }
+
+        private void btnDeleteProduct_Click(object sender, EventArgs e)
+        {
+            if (listProductsView.SelectedItems.Count > 0 && selectedProduct != null)
+            {
+                try
+                {
+                    productDeletor.execute(selectedProduct);
+                    refreshProductList();
+                }catch(Exception ex)
+                {
+                    showMessage("Error!\n" + ex.Message);
+                }
+            }
+        }
+
+        private void btnModifyCategory_Click(object sender, EventArgs e)
+        {
+
+            if(categoryList.SelectedItems.Count > 0)
+            {
+                modifyCategoryForm = new ModifyCategoryForm();
+                modifyCategoryForm.ShowCategoryDialog(categorySelected, this);
+            }
+            refreshCategoryList();
+            refreshProductList();
+        }
+
+        private void categoryList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(categoryList.SelectedItems.Count > 0)
+            {
+                this.categorySelected = categoryList.SelectedItem.ToString().Trim();
+            }
+            else
+            {
+                this.categorySelected = "";
+            }
+
+        }
+
+        private void btnEditProduct_Click(object sender, EventArgs e)
+        {
+            editProductForm = new EditProductForm();
+            if(selectedProduct != null)
+            {
+                if (editProductForm.ShowEditionDialog(this, selectedProduct) == DialogResult.OK)
+                {
+                    refreshProductList();
+                }
+            }
+            
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(txtSearch.Text.Trim()))
+            {
+                string keyword = txtSearch.Text.Trim();
+                List<ProductListViewItem> newproductList = new List<ProductListViewItem>();
+                foreach(ProductListViewItem item in productList)
+                {
+                    var p = item.product;
+                    if(p.Nombre.Contains(keyword) || p.Descripcion.Contains(keyword) || p.Ean.Contains(keyword))
+                    {
+                        newproductList.Add(item);
+                    }
+                }
+                listProductsView.Items.AddRange(newproductList.ToArray());
             }
         }
     }

@@ -9,6 +9,12 @@ namespace GestionInventario.Controlador
 {
     class RunValidator
     {
+		public static string format(string rut)
+		{
+            string text = rut.Trim().Replace(".", "").Replace("-", "");
+            return Regex.Replace(text, @"(\w{0,3})(\w{0,3})(\w{1,3})(\w{1})", @"$1$2$3-$4");
+        }
+
         public static bool Validar(string rut)
         {
 			// Implementar la validación del RUT aquí

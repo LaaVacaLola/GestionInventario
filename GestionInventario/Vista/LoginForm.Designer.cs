@@ -35,7 +35,7 @@
             this.labelContra = new System.Windows.Forms.Label();
             this.btnIniciarSesion = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.ckClave = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // txtRut
@@ -48,6 +48,7 @@
             this.txtRut.Name = "txtRut";
             this.txtRut.Size = new System.Drawing.Size(135, 28);
             this.txtRut.TabIndex = 0;
+            this.txtRut.TextChanged += new System.EventHandler(this.txtRut_TextChanged);
             // 
             // txtContraseña
             // 
@@ -82,8 +83,8 @@
             // btnIniciarSesion
             // 
             this.btnIniciarSesion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIniciarSesion.Location = new System.Drawing.Point(177, 252);
-            this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnIniciarSesion.Location = new System.Drawing.Point(133, 215);
+            this.btnIniciarSesion.Margin = new System.Windows.Forms.Padding(2);
             this.btnIniciarSesion.Name = "btnIniciarSesion";
             this.btnIniciarSesion.Size = new System.Drawing.Size(136, 37);
             this.btnIniciarSesion.TabIndex = 4;
@@ -94,8 +95,7 @@
             // btnExit
             // 
             this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(49, 252);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Location = new System.Drawing.Point(37, 215);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(115, 37);
             this.btnExit.TabIndex = 5;
@@ -103,25 +103,25 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // checkBox1
+            // ckClave
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBox1.Location = new System.Drawing.Point(127, 210);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(186, 26);
-            this.checkBox1.TabIndex = 6;
-            this.checkBox1.Text = "Mostrar contraseña";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.ckClave.AutoSize = true;
+            this.ckClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ckClave.Location = new System.Drawing.Point(85, 177);
+            this.ckClave.Name = "ckClave";
+            this.ckClave.Size = new System.Drawing.Size(150, 21);
+            this.ckClave.TabIndex = 6;
+            this.ckClave.Text = "Mostrar contraseña";
+            this.ckClave.UseVisualStyleBackColor = true;
+            this.ckClave.CheckedChanged += new System.EventHandler(this.ckClave_CheckedChanged);
             // 
             // LoginForm
             // 
             this.AcceptButton = this.btnIniciarSesion;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(375, 331);
-            this.Controls.Add(this.checkBox1);
+            this.ClientSize = new System.Drawing.Size(281, 269);
+            this.Controls.Add(this.ckClave);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnIniciarSesion);
             this.Controls.Add(this.labelContra);
@@ -151,6 +151,6 @@
         private System.Windows.Forms.Label labelContra;
         private System.Windows.Forms.Button btnIniciarSesion;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox ckClave;
     }
 }
