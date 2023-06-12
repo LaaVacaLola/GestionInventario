@@ -79,6 +79,8 @@ namespace GestionInventario.Vista
         {
            txtContraseña.UseSystemPasswordChar = !txtContraseña.UseSystemPasswordChar;
         }
+
+
     }
 
     public interface ILoginVista
